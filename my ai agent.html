@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic AI - Syed Haris Ali</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-b from-[#0A0F0F] to-[#06211C] text-white">
+
+    <!-- ✅ Navbar -->
+    <nav class="bg-[#0F1C1A]/80 backdrop-blur-md fixed w-full top-0 left-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="/logo.h.png" alt="Logo" class="h-10 w-10 rounded-full mr-3" />
+            <span class="text-xl font-semibold text-green-400">Syed Haris Ali</span>
+          </div>
+
+          <!-- Menu (Desktop) -->
+          <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="hover:text-green-400">Home</a>
+            <a href="projects.html" class="hover:text-green-400">Projects</a>
+            <a href="/services.html" class="text-green-400 font-semibold">services</a>
+            <a href="/my ai agent.html" class="hover:text-green-400">My Ai Agent</a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button id="menu-btn" class="text-white focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-[#0F1C1A]">
+        <a href="/index.html" class="block px-4 py-2 hover:text-green-400">Home</a>
+        <a href="/projects.html" class="block px-4 py-2 hover:text-green-400">Projects</a>
+        <a href="/services.html" class="block px-4 py-2 text-green-400 font-semibold">services</a>
+        <a href="/my ai agent.html" class="block px-4 py-2 hover:text-green-400">MY AI Agent</a>
+      </div>
+    </nav>
+
+    <!-- ✅ Hero Section -->
+    <section class="flex flex-col items-center justify-center text-center min-h-screen px-4 pt-24">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">
+        🤖 Welcome to <span class="text-green-400">Agentic AI Assistant</span>
+      </h1>
+      <p class="text-gray-300 max-w-md mx-auto mb-6">
+        Talk with my AI-powered assistant to learn about my portfolio, projects, or skills.
+      </p>
+      <p class="text-sm text-gray-500">Made by Syed Haris Ali 💻</p>
+    </section>
+
+    <!-- ✅ Dialogflow Chatbot -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Portfolio Assistant"
+      agent-id="fc679247-a604-4b1b-97bd-a3f0b445d9be"
+      language-code="en"
+    ></df-messenger>
+
+    <!-- ✅ Chatbot + Navbar Styling -->
+    <style>
+      df-messenger {
+        --df-messenger-bot-message: #0F332E;
+        --df-messenger-button-titlebar-color: #10B981;
+        --df-messenger-chat-background-color: #0D1715;
+        --df-messenger-font-color: white;
+        --df-messenger-send-icon: #10B981;
+        --df-messenger-user-message: #0E7E6C;
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9999;
+      }
+    </style>
+
+    <!-- ✅ Navbar Script -->
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
