@@ -5,75 +5,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   <style>
+  /* Background Blur Overlay */
+  #hireOverlay {
+    display: none;
+  }
+
+  #hireOverlay.active {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.5);
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes popup {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-popup {
+    animation: popup 0.25s ease-out;
+  }
+</style>
+
+
+
+
+
   </head>
-  <body>
+  <body class="bg-gradient-to-b from-[#0A0F0F] to-[#101212] text-white">
 
 
 
-<!-- this is header -->
-
+<!-- Header -->
 <header class="pb-6 bg-white lg:pb-1">
-     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- lg+ -->
-        <nav class="flex items-center justify-between h-16 lg:h-20">
-            <div class="flex-shrink-0">
-                <a href="#" title="" class="flex">
-                    <img class="w-16 h-16 lg:w-28 lg:h-28" src="/logo.h.png" alt="" />  
-                </a>
-            </div>
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a class="flex">
+          <img class="w-16 h-16 lg:w-22 lg:h-22" src="/logo.h.png" alt="Logo" />
+        </a>
+      </div>
 
-            <button type="button" class="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100">
-                <!-- Menu open: "hidden", Menu closed: "block" -->
-                <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                </svg>
+      <!-- Mobile Menu Button -->
+      <button type="button" class="inline-flex p-2 text-black lg:hidden focus:bg-gray-100 hover:bg-gray-100 rounded-md">
+        <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+        <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
 
-                <!-- Menu open: "block", Menu closed: "hidden" -->
-                <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
+        <a href="/index.html" class="text-base font-medium text-black hover:text-green-600 transition">Home</a>
+        <a href="/about.html" class="text-base font-medium text-black hover:text-green-600 transition">About</a>
+        <a href="/projects.html" class="text-base font-medium text-black hover:text-green-600 transition">Projects</a>
+        <a href="/services.html" class="text-base font-medium text-black hover:text-green-600 transition">Services</a>
+        <a href="/contact.html" class="text-base font-medium text-black hover:text-green-600 transition">Contact</a>
+      </div>
 
-            <div class="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
-                <a href="/index.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Home </a>
+    </nav>
 
-                <a href="/about.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
-
-                <a href="/projects.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Projects </a>
-
-                <a href="/services.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> services </a>
-
-                <a href="/my ai agent.html" title="" class="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">My Ai Agent</a>
-            </div>
-
-            <a href="#" title="" class="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md lg:inline-flex hover:bg-blue-700 focus:bg-blue-700" role="button"> Get started now </a>
-        </nav>
-
-        <!-- xs to lg -->
-        <nav class="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden">
-            <div class="flow-root">
-                <div class="flex flex-col px-6 -my-2 space-y-1">
-                    <a href="/index.html" title="" class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Home </a>
-
-                    <a href="/about.html" title="" class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
-
-                    <a href="/projects.html" title="" class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Projects </a>
-
-                    <a href="/services.html" title="" class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> services </a>
-
-                   <a href="/my ai agent.html" title="" class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> My Ai Agent </a>
-
-                  
-                </div>
-            </div>
-
-            <div class="px-6 mt-6">
-                <a href="#" title="" class="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md tems-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Get started now </a>
-            </div>
-        </nav>
-    </div>
+    <!-- Mobile Menu -->
+    <nav class="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden hidden" id="mobile-menu">
+      <div class="flex flex-col px-6 -my-2 space-y-1">
+        <a href="/index.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Home</a>
+        <a href="/about.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">About</a>
+        <a href="/projects.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Projects</a>
+        <a href="/services.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Services</a>
+        <a href="/contact.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Contact</a>
+      </div>
+     
+    </nav>
+  </div>
 </header>
-
 
 
 <!-- this is Hero  -->
@@ -97,12 +109,34 @@
           </p>
 
           <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-8 sm:mt-12">
-            <a href="#" class="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">
-              Download CV
-            </a>
-            <a href="#" class="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-green-600 rounded-lg hover:bg-green-700">
-              Hire Me
-            </a>
+         <a onclick="openHire()" class="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-green-600 rounded-lg hover:bg-green-700 cursor-pointer">
+  Hire Me
+</a>
+
+<!-- Hire popup overlay -->
+  <div id="hireOverlay" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+    <div class="bg-white w-[90%] sm:w-[420px] rounded-xl p-6 shadow-lg animate-popup">
+      <div class="flex items-start justify-between">
+        <h4 class="text-lg font-semibold">Hire Me</h4>
+        <button onclick="closeHire()" class="text-gray-600 hover:text-black">&times;</button>
+      </div>
+
+      <div class="mt-4">
+        <label class="block text- text-gray-700">Your name</label>
+        <input id="hireName" type="text" class="mt-1 w-full border border-gray-900 text-gray-900 rounded-md px-3 py-2" placeholder="Your name">
+
+        <label class="block text-sm text-gray-700 mt-4">Message</label>
+        <textarea id="hireMessage" rows="4" class="mt-1 w-full border border-gray-200 text-gray-900 rounded-md px-3 py-2" placeholder="Brief message"></textarea>
+
+        <div class="flex justify-end gap-3 mt-5">
+          <button onclick="closeHire()" class="px-4 py-2 rounded-md bg-gray-900">Cancel</button>
+          <button onclick="sendToWhatsApp()" class="px-4 py-2 rounded-md bg-gray-900 text-white">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+       
           </div>
         </div>
 
@@ -119,29 +153,25 @@
 </div>
 
 
-<!-- this is step -->
 
-<!-- Journey Section -->
+
+<!-- ========== JOURNEY SECTION (same as index step section) ========== -->
 <section class="py-20 bg-gradient-to-b from-[#0C1514] to-[#081210] text-white relative overflow-hidden">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative z-10">
 
-    <!-- Section Title -->
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-blue-300">
-        Hello, Here's My Journey
+        My Journey So Far
       </h2>
       <p class="mt-4 text-gray-400 text-lg">A step-by-step look at how I grew in skills and passion 🚀</p>
     </div>
 
-    <!-- Curved Dotted Line (for desktop only) -->
     <div class="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28 opacity-30">
       <img class="w-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/steps/2/curved-dotted-line.svg" alt="">
     </div>
 
-    <!-- Steps Grid -->
     <div class="relative grid grid-cols-1 text-center gap-y-16 md:grid-cols-3 gap-x-12 mt-16 lg:mt-20">
       
-      <!-- Step 1 -->
       <div class="group">
         <div class="flex items-center justify-center w-20 h-20 mx-auto bg-[#1A1F1F] border-2 border-green-400 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
           <span class="text-2xl font-bold text-green-400">1</span>
@@ -154,7 +184,6 @@
         </p>
       </div>
 
-      <!-- Step 2 -->
       <div class="group">
         <div class="flex items-center justify-center w-20 h-20 mx-auto bg-[#1A1F1F] border-2 border-blue-400 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
           <span class="text-2xl font-bold text-blue-400">2</span>
@@ -167,7 +196,6 @@
         </p>
       </div>
 
-      <!-- Step 3 -->
       <div class="group">
         <div class="flex items-center justify-center w-20 h-20 mx-auto bg-[#1A1F1F] border-2 border-purple-400 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
           <span class="text-2xl font-bold text-purple-400">3</span>
@@ -183,75 +211,223 @@
     </div>
   </div>
 
-  <!-- Background Glow Effects -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-green-400/10 rounded-full blur-3xl"></div>
   <div class="absolute bottom-10 right-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
 </section>
 
 
-<!-- this is location -->
+<!-- Services Section -->
+<section class="py-20 bg-gradient-to-b from-[#0A0F0F] to-[#06211C]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">My Services</h2>
+    <p class="mt-4 text-gray-400 text-lg max-w-2xl mx-auto">I offer a range of professional services tailored to improve productivity, creativity, and accuracy in your work.</p>
 
-<section class="relative bg-gradient-to-b from-[#0A0F0F] to-[#06211C] text-gray-100 py-20">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row gap-12">
-
-    <!-- Left: Map and Address -->
-    <div class="lg:w-2/3 relative rounded-3xl overflow-hidden shadow-2xl">
-      <iframe 
-        class="absolute inset-0 w-full h-full"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1715.0537711199363!2d67.05513578132822!3d24.89224870346291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33fefe8873a9f%3A0xc9ed8ab31a541cb4!2sUNIQUE%20STAND%20ACADEMY!5e0!3m2!1sen!2s!4v1761162307209!5m2!1sen!2s" 
-        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
-      </iframe>
-
-      <div class="relative bg-[#0D1716]/90 backdrop-blur-sm p-8 md:p-10 rounded-3xl shadow-lg z-10">
-        <h2 class="text-3xl font-bold mb-4 text-green-400">Contact Info</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="font-semibold text-white text-sm tracking-widest mb-1">ADDRESS</h3>
-            <p class="text-gray-300">House No. 498, PIB Colony, Karachi</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-white text-sm tracking-widest mb-1">EMAIL</h3>
-            <a href="mailto:harisrahat95@gmail.com" class="text-green-400 hover:underline">harisrahat95@gmail.com</a>
-            <h3 class="font-semibold text-white text-sm tracking-widest mt-4 mb-1">PHONE</h3>
-            <p class="text-gray-300">0311-0102486</p>
-          </div>
-        </div>
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Service 1: MS Excel -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">MS Excel</h3>
+        <p class="text-gray-300 text-sm">Data Entry, Analysis, Charts, Formulas, and automating reports for business efficiency.</p>
       </div>
-    </div>
 
-    <!-- Right: Feedback Form -->
-    <div class="lg:w-1/3 bg-[#0F1C1B] rounded-3xl p-8 shadow-2xl">
-      <h2 class="text-3xl font-bold text-green-400 mb-4">Let's Connect</h2>
-      <p class="text-gray-400 mb-8">Have a question or feedback? Write to me below 👇</p>
+      <!-- Service 2: MS Word -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">MS Word</h3>
+        <p class="text-gray-300 text-sm">Professional documents, formatting, reports, letters, and resumes with attention to detail.</p>
+      </div>
 
-      <form action="harisrahat95@gmail.com" method="POST" class="space-y-5">
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
-          <input type="text" id="name" name="name" required
-            class="w-full bg-[#142826] border border-green-500/30 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 outline-none transition">
-        </div>
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-          <input type="email" id="email" name="email" required
-            class="w-full bg-[#142826] border border-green-500/30 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 outline-none transition">
-        </div>
-        <div>
-          <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
-          <textarea id="message" name="message" rows="4" required
-            class="w-full bg-[#142826] border border-green-500/30 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 outline-none transition"></textarea>
-        </div>
-        <button type="submit"
-          class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-lg transition-all duration-200 shadow-lg hover:shadow-green-500/30">
-          Send Message
-        </button>
-      </form>
+      <!-- Service 3: Canva Design -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">Canva Design</h3>
+        <p class="text-gray-300 text-sm">Creative presentations, posters, social media visuals, and branding designs.</p>
+      </div>
+
+      <!-- Service 4: ChatGPT / Prompt Engineering -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">ChatGPT / AI Prompts</h3>
+        <p class="text-gray-300 text-sm">Content creation, emails, reports, and other text-based tasks using AI prompt engineering.</p>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- this is footer -->
+<!-- Page Header -->
+  <header class="text-center py-16">
+    <h1 class="text-4xl font-bold sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400">
+      My Projects
+    </h1>
+    <p class="mt-4 text-gray-300 max-w-2xl mx-auto">
+      A collection of my best work — categorized by skill and creativity
+    </p>
+  </header>
 
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+  <!-- Excel Projects -->
+    <section id="excel">
+      <h2 class="text-3xl font-semibold mb-6 text-green-300">📊 Excel Projects</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Project 1 -->
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-green-400/20 transition">
+          <img src=" " alt="Excel Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Sales Dashboard</h3>
+          <p class="text-gray-400 mb-4">Interactive dashboard tracking monthly sales performance.</p>
+          <a href="" class="text-blue-400 hover:underline">View Project →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-green-400/20 transition">
+          <img src=" " alt="Excel Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Expense Tracker</h3>
+          <p class="text-gray-400 mb-4">Automated budget sheet with dynamic charts.</p>
+          <a href="#" class="text-blue-400 hover:underline">View Project →</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-green-400/20 transition">
+          <img src=" " alt="Excel Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Attendance System</h3>
+          <p class="text-gray-400 mb-4">Smart attendance tracking with conditional formatting.</p>
+          <a href="#" class="text-blue-400 hover:underline">View Project →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Canva Designs -->
+    <section id="canva">
+      <h2 class="text-3xl font-semibold mb-6 text-pink-300">🎨 Canva Designs</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-pink-400/20 transition">
+          <img src=" " alt="Canva Design" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Wedding Invitation</h3>
+          <p class="text-gray-400 mb-4">Elegant invitation designed in Canva.</p>
+          <a href="#" class="text-blue-400 hover:underline">View Design →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-pink-400/20 transition">
+          <img src=" " alt="Canva Design" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Logo Collection</h3>
+          <p class="text-gray-400 mb-4">Modern logos created using Canva elements.</p>
+          <a href="#" class="text-blue-400 hover:underline">View Designs →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-pink-400/20 transition">
+          <img src=" " alt="Canva Design" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Social Media Posts</h3>
+          <p class="text-gray-400 mb-4">Eye-catching posts for brands and events.</p>
+          <a href="#" class="text-blue-400 hover:underline">View Posts →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AI Images & Videos -->
+    <section id="ai">
+      <h2 class="text-3xl font-semibold mb-6 text-purple-300">🤖 AI Images & Videos</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-purple-400/20 transition">
+          <img src=" " alt="AI Art" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Cyber City</h3>
+          <p class="text-gray-400 mb-4">Prompt: “Futuristic neon city at night.”</p>
+          <a href="" class="text-blue-400 hover:underline">View Art →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-purple-400/20 transition">
+          <img src="/AI_vedio_cover_image.png" alt="AI Video" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">AI Short Film</h3>
+          <p class="text-gray-400 mb-4">Generated video using Runway & Gemini prompt.</p>
+          <a href="/AI_vedio.mp4" class="text-blue-400 hover:underline">Watch Video →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-purple-400/20 transition">
+          <img src=" " alt="AI Portrait" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">Fantasy Portrait</h3>
+          <p class="text-gray-400 mb-4">Prompt: “Royal portrait with soft cinematic lighting.”</p>
+          <a href="#" class="text-blue-400 hover:underline">View Portrait →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Development Projects -->
+    <section id="dev">
+      <h2 class="text-3xl font-semibold mb-6 text-blue-300">💻 Development Projects</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-blue-400/20 transition">
+          <img src="/AI object detector img.png " alt="Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">AI Obeject detector</h3>
+          <p class="text-gray-400 mb-4">This is my object detector ai model</p>
+          <a href="https://teachablemachine.withgoogle.com/models/4lfh9O99W/" class="text-blue-400 hover:underline">View model →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-blue-400/20 transition">
+          <img src="/AI voice detector img.png " alt="Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">AI voice detector</h3>
+          <p class="text-gray-400 mb-4">This is my voice detector ai model.</p>
+          <a href="https://teachablemachine.withgoogle.com/models/kOQRXj3bo/" class="text-blue-400 hover:underline">View model →</a>
+        </div>
+
+        <div class="bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-blue-400/20 transition">
+          <img src="/AI pose detector img.png" alt="Dev Project" class="rounded-lg w-full h-48 object-cover object-center mb-4" />
+          <h3 class="text-xl font-semibold mb-2">AI poses detector</h3>
+          <p class="text-gray-400 mb-4">This is my poses detector ai model.</p>
+          <a href="https://teachablemachine.withgoogle.com/models/qnVUkLpRN/" class="text-blue-400 hover:underline">View model →</a>
+        </div>
+
+      </div>
+    </section>  
+  
+  </main>
+
+
+
+ 
+
+<!-- WhatsApp Contact Section -->
+<section class="sm:grid-cols-2 py-20">
+  <div class="max-w-3xl mx-auto bg-[#1A1F1F] rounded-2xl p-5 shadow-lg hover:shadow-blue-400/20 transition rounded-3xl p-10 text-center">
+
+    <h2 class="text-4xl font-bold text-[#25D366] mb-4">Contact Me</h2>
+    <p class="text-gray-100 mb-8">Talk to me directly on WhatsApp </p>
+
+    <div class="space-y-6">
+
+      <!-- Phone / WhatsApp -->
+      <a href="https://wa.me/923110102486" target="_blank"
+        class="flex items-center justify-center gap-3 bg-[#25D366] text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:bg-[#1ebe5b] transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+             class="w-7 h-7" />
+        Chat on WhatsApp
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:harisrahat95@gmail.com"
+        class="flex items-center justify-center gap-3 bg-[#1b2938] text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:bg-[#111b25] transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"   
+             class="w-7 h-7" />
+        Send Email
+      </a>
+
+      <!-- Phone Call -->
+      <a href="tel:923110102486"
+        class="flex items-center justify-center gap-3 bg-[#34495e] text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:bg-[#2c3e50] transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" 
+             class="w-7 h-7" />
+        Call Now
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- this is footer -->
 
 <footer class="bg-gradient-to-b from-[#0A0F0F] to-[#06211C] text-gray-300 py-12">
   <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
@@ -303,9 +479,63 @@
   </div>
 </footer>
 
+<!-- whatsapp logic -->
+
+<script>
+  function openHire() {
+    document.getElementById("hireOverlay").classList.add("active");
+  }
+
+  function closeHire() {
+    document.getElementById("hireOverlay").classList.remove("active");
+  }
+
+  function sendToWhatsApp() {
+    let name = document.getElementById("hireName").value;
+    let message = document.getElementById("hireMessage").value;
+
+    if (!name || !message) {
+      alert("Please fill both fields!");
+      return;
+    }
+
+    let whatsappNumber = "923110102486"; // ← apna number daalna
+    let text = `New Hire Request\n\nName: ${name}\nMessage: ${message}`;
+
+    let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+    window.open(url, "_blank");
+
+    closeHire();
+  }
+</script>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"32a6b41659000dd6e4f9397b437b7ab96","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+
+
+<script>
+  const btn = document.querySelector('header button');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+
+
+    
 
 
   </body>
-</html>
 
-                
+</html>
