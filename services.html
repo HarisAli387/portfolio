@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Services - Syed Haris Ali</title>
+</head>
+<body class="bg-[#101212] text-white">
+
+<!-- Header -->
+<header class="pb-6 bg-white lg:pb-1">
+  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a  class="flex">
+           <img class="w-16 h-16 lg:w-22 lg:h-22 object-contain" src="/logo.h.png" alt="Logo" />
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button type="button" class="inline-flex p-2 text-black lg:hidden focus:bg-gray-100 hover:bg-gray-100 rounded-md">
+        <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+        <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
+        <a href="/index.html" class="text-base font-medium text-black hover:text-green-600 transition">Home</a>
+        <a href="/about.html" class="text-base font-medium text-black hover:text-green-600 transition">About</a>
+        <a href="/projects.html" class="text-base font-medium text-black hover:text-green-600 transition">Projects</a>
+        <a href="/services.html" class="text-base font-medium text-black hover:text-green-600 transition">Services</a>
+        <a href="/contact.html" class="text-base font-medium text-black hover:text-green-600 transition">Contact</a>
+      </div>
+
+   
+    </nav>
+
+    <!-- Mobile Menu -->
+    <nav class="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden hidden" id="mobile-menu">
+      <div class="flex flex-col px-6 -my-2 space-y-1">
+        <a href="/index.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Home</a>
+        <a href="/about.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">About</a>
+        <a href="/projects.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Projects</a>
+        <a href="/services.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Services</a>
+        <a href="/contact.html" class="inline-flex py-2 text-base font-medium text-black hover:text-green-600">Contact</a>
+      </div>
+    
+    </nav>
+  </div>
+</header>
+
+<!-- Services Section -->
+<section class="py-20 bg-gradient-to-b from-[#0A0F0F] to-[#06211C]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">My Services</h2>
+    <p class="mt-4 text-gray-400 text-lg max-w-2xl mx-auto">I offer a range of professional services tailored to improve productivity, creativity, and accuracy in your work.</p>
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Service 1: MS Excel -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">MS Excel</h3>
+        <p class="text-gray-300 text-sm">Data Entry, Analysis, Charts, Formulas, and automating reports for business efficiency.</p>
+      </div>
+
+      <!-- Service 2: MS Word -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">MS Word</h3>
+        <p class="text-gray-300 text-sm">Professional documents, formatting, reports, letters, and resumes with attention to detail.</p>
+      </div>
+
+      <!-- Service 3: Canva Design -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">Canva Design</h3>
+        <p class="text-gray-300 text-sm">Creative presentations, posters, social media visuals, and branding designs.</p>
+      </div>
+
+      <!-- Service 4: ChatGPT / Prompt Engineering -->
+      <div class="bg-[#0F1C1B] rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-green-400 mb-2">ChatGPT / AI Prompts</h3>
+        <p class="text-gray-300 text-sm">Content creation, emails, reports, and other text-based tasks using AI prompt engineering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#0A0F0F] text-gray-300 py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <img src="/logo.h.png" alt="Logo" class="w-20 h-20 mb-6 rounded-full shadow-lg ring-2 ring-green-400/50">
+    <div class="flex justify-center space-x-5 mb-6">
+      <a href="https://facebook.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#0F1C1B] rounded-full hover:bg-green-600 transition">F</a>
+      <a href="https://instagram.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#0F1C1B] rounded-full hover:bg-green-600 transition">I</a>
+      <a href="https://github.com" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#0F1C1B] rounded-full hover:bg-green-600 transition">G</a>
+    </div>
+    <p class="text-sm text-gray-400">© 2025 Syed Haris Ali — All Rights Reserved 💚</p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.querySelector('header button');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>
